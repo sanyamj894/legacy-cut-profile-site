@@ -87,11 +87,11 @@
 }
 
 @layer utilities {
-  /* Custom animations */
+  /* Enhanced Custom animations */
   @keyframes fade-in {
     0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     100% {
       opacity: 1;
@@ -102,7 +102,7 @@
   @keyframes fade-in-up {
     0% {
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(50px);
     }
     100% {
       opacity: 1;
@@ -113,7 +113,18 @@
   @keyframes slide-in-right {
     0% {
       opacity: 0;
-      transform: translateX(50px);
+      transform: translateX(80px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-80px);
     }
     100% {
       opacity: 1;
@@ -126,69 +137,158 @@
       transform: translateY(0);
     }
     40% {
-      transform: translateY(-10px);
+      transform: translateY(-15px);
     }
     60% {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes scale-pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes rotate-glow {
+    0% {
+      transform: rotate(0deg);
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    }
+    50% {
+      transform: rotate(180deg);
+      box-shadow: 0 0 40px rgba(249, 115, 22, 0.5);
+    }
+    100% {
+      transform: rotate(360deg);
+      box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
     }
   }
 
   .animate-fade-in {
-    animation: fade-in 0.8s ease-out forwards;
+    animation: fade-in 1s ease-out forwards;
   }
 
   .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
+    animation: fade-in-up 1.2s ease-out forwards;
   }
 
   .animate-slide-in-right {
-    animation: slide-in-right 0.6s ease-out forwards;
+    animation: slide-in-right 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out forwards;
   }
 
   .animate-bounce-gentle {
-    animation: bounce-gentle 2s infinite;
+    animation: bounce-gentle 3s infinite;
   }
 
-  /* Hover effects */
+  .animate-scale-pulse {
+    animation: scale-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-rotate-glow {
+    animation: rotate-glow 4s linear infinite;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /* Enhanced hover effects */
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+    @apply transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:scale-105;
   }
 
   .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
+    @apply transition-transform duration-500 hover:scale-110;
   }
 
-  /* Gradient text */
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/20;
   }
 
-  /* Glass effect */
-  .glass {
-    @apply bg-white/90 backdrop-blur-lg border border-white/20 shadow-xl;
+  /* Legacy-themed gradient text */
+  .gradient-text-legacy {
+    @apply bg-gradient-to-r from-red-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent;
   }
 
-  /* Custom scrollbar */
+  .gradient-text-50 {
+    @apply bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 bg-clip-text text-transparent;
+  }
+
+  /* Enhanced glass effect */
+  .glass-legacy {
+    @apply bg-white/95 backdrop-blur-xl border border-red-200/30 shadow-2xl;
+  }
+
+  /* Custom scrollbar with legacy colors */
   .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+    background: #fef2f2;
+    border-radius: 15px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #3b82f6, #1d4ed8);
-    border-radius: 10px;
+    background: linear-gradient(180deg, #dc2626, #ea580c, #d97706);
+    border-radius: 15px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #1d4ed8, #1e3a8a);
+    background: linear-gradient(180deg, #b91c1c, #c2410c, #b45309);
+  }
+
+  /* 50-year celebration animations */
+  .celebrate-50 {
+    animation: scale-pulse 2s ease-in-out infinite, rotate-glow 6s linear infinite;
+  }
+
+  /* Logo showcase animations */
+  .logo-showcase {
+    @apply transform transition-all duration-700 hover:scale-110 hover:rotate-3 hover:shadow-2xl;
+  }
+
+  /* Legacy border animations */
+  .legacy-border {
+    position: relative;
+  }
+
+  .legacy-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    background: linear-gradient(45deg, #dc2626, #ea580c, #d97706, #eab308);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    animation: rotate-glow 3s linear infinite;
+  }
+
+  /* Timeline animation */
+  .timeline-animation {
+    animation: slide-in-right 1s ease-out forwards, scale-pulse 2s ease-in-out infinite 1s;
   }
 }
 
-/* Loading animation */
+/* Enhanced loading animations */
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
@@ -198,6 +298,52 @@
   }
 }
 
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
 .animate-spin-slow {
-  animation: spin-slow 3s linear infinite;
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 6s linear infinite;
+}
+
+/* 3D effect for logos */
+.logo-3d {
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(0deg);
+  transition: transform 0.6s ease;
+}
+
+.logo-3d:hover {
+  transform: perspective(1000px) rotateY(15deg) rotateX(5deg);
+}
+
+/* Celebration particles */
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.particle {
+  animation: particle-float 8s linear infinite;
 }
